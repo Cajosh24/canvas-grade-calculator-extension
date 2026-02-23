@@ -1,3 +1,14 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Optional icon/build files
+icon.png
+
 # Logs
 logs
 *.log
