@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Canvas Grade Calculator",
+  "version": "1.0",
+  "description": "Chrome extension that calculates Canvas grades for students.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.instructure.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
