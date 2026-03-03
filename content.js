@@ -4,16 +4,17 @@ window.addEventListener("load", () => {
     const load_check = setInterval(() => {
 
         const assignments = document.querySelectorAll("tr.student_assignment");
-        
+
         if(assignments.length > 0){
             clearInterval(load_check);
             extractAssignments();
+            extractWeight();
         }
     }, 500);
 });
 
 function extractAssignments() {
-    // find assignments in HTML
+    // extract assignments data in HTML
     const assignments = document.querySelectorAll("tr.student_assignment");
 
     let results = [];
@@ -42,4 +43,22 @@ function extractAssignments() {
     });
 
     console.log("Assignments found:", results);
+
+
+    //extract weight data data in HTML
+    const weights = document.querySelectorAll("table.summary tr");
+
+    let total_weight = [];
+
+    weights.forEach(row => {
+        const category = row.querySelector("td")?.innerText.trim();
+        const weight = row.querySelector("th")?.innerText.trim();
+
+        if (title && score && category) {
+            const weight_num = parseFloat(weight.replace("%", "")) / 100
+            total_weight.push({category, weight_num});
+        }
+    });
+
+    console.log(total_weight);
 }
